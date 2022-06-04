@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="input_Container">
+        <input type="text" id="post_Content" placeholder="POST .....">
+        <input type="submit" id="submit_Content" value="Submit">
+    </div>
+    <div id="Posts">
+       
+    </div>
+
+    <script>
+        const Posts = document.getElementById('Posts'),
+            Post_Content = document.getElementById('post_Content'),
+            submit_Content = document.getElementById('submit_Content');
+            
+
+        submit_Content.addEventListener('click', function () {
+            const post = document.createElement("div");
+            post.setAttribute('class', "post");
+            const h3 = document.createElement('h3');
+            const p = document.createElement('p');
+            const div = document.createElement('div');
+            const Comment_Content = document.createElement('input');
+            const submit_Comment = document.createElement('input');
+            h3.innerHTML = "Post :";
+            p.innerHTML = Post_Content.value;
+            Comment_Content.setAttribute('type', 'text');
+            Comment_Content.setAttribute('id', 'Comment_Content');
+            Comment_Content.setAttribute('placeholder', 'Comment ...');
+            submit_Comment.setAttribute('type', 'submit');
+            submit_Comment.setAttribute('id', 'submit_Comment');
+            submit_Comment.setAttribute('value', 'Send');
+            div.setAttribute('class', 'Comment');
+            div.appendChild(Comment_Content);
+            div.appendChild(submit_Comment);
+            const h4 = document.createElement('h4');
+            
+            post.appendChild(p);
+            post.appendChild(div);
+            post.appendChild(h4);
+            Posts.appendChild(post);
+            submit_Comment.addEventListener('click', function () {
+
+                const span = document.createElement('span');
+                span.innerHTML = Comment_Content.value;
+                h4.innerHTML = "Comments :";
+
+                post.appendChild(span);
+                Comment_Content.value = '';
+            })
+            Post_Content.value = '';
+
+        })
+    </script>
+</body>
+
+</html>
